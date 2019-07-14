@@ -7,29 +7,31 @@
 //
 
 import UIKit
-import Realm
+import RealmSwift
 
 class ToDoListViewController: UITableViewController {
     
-    var tasks = [Task]()
+    let realm = try! Realm()
+    
+    var tasks : Results<Task>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        loadTasks()
     }
     
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return tasks.count
+        return tasks?.count ?? 1
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
         
-        cell.textLabel?.text = tasks[indexPath.row].title
+        cell.textLabel?.text = tasks?[indexPath.row].title ?? "There is no task to do!"
         
         return cell
     }
@@ -51,8 +53,8 @@ class ToDoListViewController: UITableViewController {
             
             let newTask = Task()
             newTask.title = textField.text!
-            self.tasks.append(newTask)
-            self.tableView.reloadData()
+            
+            self.save(task: newTask)
         }
         
         alert.addAction(action)
@@ -64,4 +66,22 @@ class ToDoListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    func save(task: Task) {
+        
+        do {
+            try realm.write {
+                realm.add(task)
+            }
+        } catch {
+            print("Error saving context \(error)")
+        }
+        tableView.reloadData()
+    }
+    
+    func loadTasks() {
+        
+        tasks = realm.objects(Task.self)
+        
+        tableView.reloadData()
+    }
 }
