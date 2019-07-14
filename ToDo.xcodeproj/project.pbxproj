@@ -14,6 +14,8 @@
 		D340FC3C22DB617300C4D0B0 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340FC3B22DB617300C4D0B0 /* Task.swift */; };
 		D340FC4922DB981D00C4D0B0 /* ToDoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340FC4822DB981D00C4D0B0 /* ToDoListViewController.swift */; };
 		D340FC4B22DB98C700C4D0B0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340FC4A22DB98C700C4D0B0 /* DetailsViewController.swift */; };
+		D340FC4F22DBA5A500C4D0B0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D340FC4D22DBA5A400C4D0B0 /* RealmSwift.framework */; };
+		D340FC5022DBA5A500C4D0B0 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D340FC4E22DBA5A400C4D0B0 /* Realm.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		D340FC3B22DB617300C4D0B0 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		D340FC4822DB981D00C4D0B0 /* ToDoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewController.swift; sourceTree = "<group>"; };
 		D340FC4A22DB98C700C4D0B0 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		D340FC4D22DBA5A400C4D0B0 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		D340FC4E22DBA5A400C4D0B0 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D340FC4F22DBA5A500C4D0B0 /* RealmSwift.framework in Frameworks */,
+				D340FC5022DBA5A500C4D0B0 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +50,7 @@
 			children = (
 				D340FC2622DB5D1F00C4D0B0 /* ToDo */,
 				D340FC2522DB5D1F00C4D0B0 /* Products */,
+				D340FC4C22DBA5A400C4D0B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +109,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		D340FC4C22DBA5A400C4D0B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D340FC4E22DBA5A400C4D0B0 /* Realm.framework */,
+				D340FC4D22DBA5A400C4D0B0 /* RealmSwift.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -112,6 +128,7 @@
 				D340FC2022DB5D1F00C4D0B0 /* Sources */,
 				D340FC2122DB5D1F00C4D0B0 /* Frameworks */,
 				D340FC2222DB5D1F00C4D0B0 /* Resources */,
+				D340FC5122DBA67D00C4D0B0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -167,6 +184,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D340FC5122DBA67D00C4D0B0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D340FC2022DB5D1F00C4D0B0 /* Sources */ = {
@@ -324,6 +363,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9YP2WVC7Z2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "ToDo/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -342,6 +385,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9YP2WVC7Z2;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "ToDo/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
