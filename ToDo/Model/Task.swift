@@ -7,3 +7,7 @@
 //
 
 import Foundation
+
+class Task {
+    var title: String = ""
+}
