@@ -41,23 +41,41 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="QJA-WA-Cip" kind="show" id="ZqX-Ha-IHP"/>
+                        <segue destination="QJA-WA-Cip" kind="show" identifier="showDetails" id="ZqX-Ha-IHP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A2P-RK-TUV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1113.0434782608697" y="95.758928571428569"/>
         </scene>
-        <!--View Controller-->
+        <!--Details View Controller-->
         <scene sceneID="LeP-0P-IWf">
             <objects>
-                <viewController id="QJA-WA-Cip" sceneMemberID="viewController">
+                <viewController id="QJA-WA-Cip" customClass="DetailsViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B7Z-pq-ZLE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HBX-9y-arc">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="WHB-Ai-Gc0"/>
+                            <constraint firstItem="YMG-f2-SNl" firstAttribute="bottom" secondItem="HBX-9y-arc" secondAttribute="bottom" id="iNL-gV-ZGB"/>
+                            <constraint firstItem="YMG-f2-SNl" firstAttribute="trailing" secondItem="HBX-9y-arc" secondAttribute="trailing" id="tkM-09-btA"/>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="top" secondItem="YMG-f2-SNl" secondAttribute="top" id="tqb-CR-F0Z"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YMG-f2-SNl"/>
                     </view>
+                    <connections>
+                        <outlet property="details" destination="HBX-9y-arc" id="sJn-0y-wQH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sal-Th-fPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
