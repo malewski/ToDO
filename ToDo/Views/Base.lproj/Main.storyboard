@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="s1r-oN-Qbu">
-    <device id="retina6_1" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,15 +15,15 @@
             <objects>
                 <tableViewController id="4DD-2J-VNY" customClass="ToDoListViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hnl-58-Gef">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="taskCell" id="PEK-cd-8KH">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="taskCell" id="PEK-cd-8KH">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PEK-cd-8KH" id="kj4-7i-35v">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="335" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -48,38 +48,62 @@
             </objects>
             <point key="canvasLocation" x="1113.0434782608697" y="95.758928571428569"/>
         </scene>
-        <!--Details View Controller-->
+        <!--Task-->
         <scene sceneID="LeP-0P-IWf">
             <objects>
                 <viewController id="QJA-WA-Cip" customClass="DetailsViewController" customModule="ToDo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B7Z-pq-ZLE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="HBX-9y-arc">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBX-9y-arc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="558"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Unb-ij-Wfm">
+                                <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Zf9-du-ohm"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem systemItem="done" id="te8-He-gFY">
+                                        <connections>
+                                            <action selector="DoneButtonPressed:" destination="QJA-WA-Cip" id="ThT-bZ-42h"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="flexibleSpace" id="ddJ-JW-swG"/>
+                                    <barButtonItem systemItem="edit" id="wa7-h1-MiU">
+                                        <connections>
+                                            <action selector="EditButtonPressed:" destination="QJA-WA-Cip" id="gP2-9C-wY5"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HBX-9y-arc" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="WHB-Ai-Gc0"/>
-                            <constraint firstItem="YMG-f2-SNl" firstAttribute="bottom" secondItem="HBX-9y-arc" secondAttribute="bottom" id="iNL-gV-ZGB"/>
-                            <constraint firstItem="YMG-f2-SNl" firstAttribute="trailing" secondItem="HBX-9y-arc" secondAttribute="trailing" id="tkM-09-btA"/>
-                            <constraint firstItem="HBX-9y-arc" firstAttribute="top" secondItem="YMG-f2-SNl" secondAttribute="top" id="tqb-CR-F0Z"/>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="1jO-XH-SFs"/>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="trailing" secondItem="YMG-f2-SNl" secondAttribute="trailing" id="3Uo-z0-xg0"/>
+                            <constraint firstItem="Unb-ij-Wfm" firstAttribute="bottom" secondItem="YMG-f2-SNl" secondAttribute="bottom" id="CyK-Ws-ara"/>
+                            <constraint firstItem="Unb-ij-Wfm" firstAttribute="top" secondItem="HBX-9y-arc" secondAttribute="bottom" id="KZW-R8-xwM"/>
+                            <constraint firstItem="Unb-ij-Wfm" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="OfW-zm-ard"/>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="top" secondItem="YMG-f2-SNl" secondAttribute="top" id="dH6-5g-VaD"/>
+                            <constraint firstItem="Unb-ij-Wfm" firstAttribute="trailing" secondItem="YMG-f2-SNl" secondAttribute="trailing" id="fiz-7J-I7o"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMG-f2-SNl"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Task" id="kjJ-sJ-WeY"/>
                     <connections>
                         <outlet property="details" destination="HBX-9y-arc" id="sJn-0y-wQH"/>
+                        <outlet property="navBar" destination="kjJ-sJ-WeY" id="Dy8-Ef-djG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sal-Th-fPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1981" y="96"/>
+            <point key="canvasLocation" x="1979.7101449275365" y="95.758928571428569"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KbY-ms-eIV">
@@ -87,7 +111,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s1r-oN-Qbu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WQl-zR-7fU">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

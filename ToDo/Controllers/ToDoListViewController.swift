@@ -19,7 +19,9 @@ class ToDoListViewController: UITableViewController {
         super.viewDidLoad()
         loadTasks()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,7 +33,14 @@ class ToDoListViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "taskCell", for: indexPath)
         
-        cell.textLabel?.text = tasks?[indexPath.row].title ?? "There is no task to do!"
+        if let task = tasks?[indexPath.row] {
+            
+            cell.textLabel?.text = task.title
+            
+            cell.accessoryType = task.done ? .checkmark: .none
+        } else {
+            cell.textLabel?.text = "There is no task to do!"
+        }
         
         return cell
     }
@@ -41,6 +50,14 @@ class ToDoListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "showDetails", sender: self)
         
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! DetailsViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedTask = tasks?[indexPath.row]
+        }
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -53,7 +70,6 @@ class ToDoListViewController: UITableViewController {
             
             let newTask = Task()
             newTask.title = textField.text!
-            
             self.save(task: newTask)
         }
         
