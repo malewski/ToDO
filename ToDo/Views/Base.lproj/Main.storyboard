@@ -57,53 +57,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBX-9y-arc">
-                                <rect key="frame" x="0.0" y="64" width="375" height="558"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="553"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Unb-ij-Wfm">
-                                <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUf-Wv-2Yf">
+                                <rect key="frame" x="0.0" y="617" width="375" height="50"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Zf9-du-ohm"/>
+                                    <constraint firstAttribute="height" constant="50" id="26B-jM-a69"/>
                                 </constraints>
-                                <items>
-                                    <barButtonItem systemItem="done" id="te8-He-gFY">
-                                        <connections>
-                                            <action selector="DoneButtonPressed:" destination="QJA-WA-Cip" id="ThT-bZ-42h"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem systemItem="flexibleSpace" id="ddJ-JW-swG"/>
-                                    <barButtonItem systemItem="edit" id="wa7-h1-MiU">
-                                        <connections>
-                                            <action selector="EditButtonPressed:" destination="QJA-WA-Cip" id="gP2-9C-wY5"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="DoneButtonPressed:" destination="QJA-WA-Cip" eventType="touchUpInside" id="pc4-jt-jH4"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="HBX-9y-arc" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="1jO-XH-SFs"/>
-                            <constraint firstItem="HBX-9y-arc" firstAttribute="trailing" secondItem="YMG-f2-SNl" secondAttribute="trailing" id="3Uo-z0-xg0"/>
-                            <constraint firstItem="Unb-ij-Wfm" firstAttribute="bottom" secondItem="YMG-f2-SNl" secondAttribute="bottom" id="CyK-Ws-ara"/>
-                            <constraint firstItem="Unb-ij-Wfm" firstAttribute="top" secondItem="HBX-9y-arc" secondAttribute="bottom" id="KZW-R8-xwM"/>
-                            <constraint firstItem="Unb-ij-Wfm" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="OfW-zm-ard"/>
-                            <constraint firstItem="HBX-9y-arc" firstAttribute="top" secondItem="YMG-f2-SNl" secondAttribute="top" id="dH6-5g-VaD"/>
-                            <constraint firstItem="Unb-ij-Wfm" firstAttribute="trailing" secondItem="YMG-f2-SNl" secondAttribute="trailing" id="fiz-7J-I7o"/>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="trailing" secondItem="YMG-f2-SNl" secondAttribute="trailing" id="18H-QL-UaW"/>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="AL6-zD-gBr"/>
+                            <constraint firstItem="CUf-Wv-2Yf" firstAttribute="top" secondItem="HBX-9y-arc" secondAttribute="bottom" id="F9I-Zm-6Hd"/>
+                            <constraint firstItem="YMG-f2-SNl" firstAttribute="bottom" secondItem="CUf-Wv-2Yf" secondAttribute="bottom" id="QpN-Ut-KeB"/>
+                            <constraint firstItem="CUf-Wv-2Yf" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="Yvq-rF-GZh"/>
+                            <constraint firstItem="YMG-f2-SNl" firstAttribute="trailing" secondItem="CUf-Wv-2Yf" secondAttribute="trailing" id="g6U-i4-qDo"/>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="top" secondItem="YMG-f2-SNl" secondAttribute="top" id="rit-Br-CBj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMG-f2-SNl"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Task" id="kjJ-sJ-WeY"/>
+                    <navigationItem key="navigationItem" title="Task" id="kjJ-sJ-WeY">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="wa7-h1-MiU">
+                            <connections>
+                                <action selector="EditButtonPressed:" destination="QJA-WA-Cip" id="gP2-9C-wY5"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="details" destination="HBX-9y-arc" id="sJn-0y-wQH"/>
+                        <outlet property="doneButton" destination="CUf-Wv-2Yf" id="wJu-c2-Zmz"/>
+                        <outlet property="editButton" destination="wa7-h1-MiU" id="VgM-yF-zEI"/>
                         <outlet property="navBar" destination="kjJ-sJ-WeY" id="Dy8-Ef-djG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sal-Th-fPY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1979.7101449275365" y="95.758928571428569"/>
+            <point key="canvasLocation" x="1978.4000000000001" y="94.902548725637189"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KbY-ms-eIV">
