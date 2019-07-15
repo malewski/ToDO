@@ -131,7 +131,7 @@
                         <viewLayoutGuide key="safeArea" id="YMG-f2-SNl"/>
                     </view>
                     <navigationItem key="navigationItem" title="Task" id="kjJ-sJ-WeY">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="wa7-h1-MiU">
+                        <barButtonItem key="rightBarButtonItem" title="Rename" id="wa7-h1-MiU">
                             <connections>
                                 <action selector="EditButtonPressed:" destination="QJA-WA-Cip" id="gP2-9C-wY5"/>
                             </connections>
