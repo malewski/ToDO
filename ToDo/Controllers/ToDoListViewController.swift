@@ -20,7 +20,9 @@ class ToDoListViewController: UITableViewController {
         loadTasks()
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.tableView.reloadData()
+        
+        loadTasks()
+//        self.tableView.reloadData()
     }
     // MARK: - Table view data source
     
@@ -104,12 +106,13 @@ class ToDoListViewController: UITableViewController {
         } catch {
             print("Error saving context \(error)")
         }
-        tableView.reloadData()
+        loadTasks()
+//        tableView.reloadData()
     }
     
     func loadTasks() {
         
-        tasks = realm.objects(Task.self)
+        tasks = realm.objects(Task.self).sorted(byKeyPath: "priority", ascending: false)
         
         tableView.reloadData()
     }
