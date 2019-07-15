@@ -73,11 +73,16 @@ class ToDoListViewController: UITableViewController {
             let newTask = Task()
             newTask.title = textField.text!
             self.save(task: newTask)
+            let indexPath = IndexPath(row: self.tasks!.count-1, section: 0)
+            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+            self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+            self.performSegue(withIdentifier: "showDetails", sender: self)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
             
         }
+        
         addAction.isEnabled = false
         alert.addAction(cancelAction)
         alert.addAction(addAction)
