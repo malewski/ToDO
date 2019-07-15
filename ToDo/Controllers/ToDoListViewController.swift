@@ -64,21 +64,34 @@ class ToDoListViewController: UITableViewController {
         
         var textField = UITextField()
         
-        let alert = UIAlertController(title: "Add task", message: "", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Add new task", message: "", preferredStyle: .alert)
         
-        let action = UIAlertAction(title: "Add task", style: .default) { (action) in
+        let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
             
             let newTask = Task()
             newTask.title = textField.text!
             self.save(task: newTask)
         }
         
-        alert.addAction(action)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            
+        }
+        addAction.isEnabled = false
+        alert.addAction(cancelAction)
+        alert.addAction(addAction)
+
         alert.addTextField { (alertTextField) in
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: alertTextField, queue: OperationQueue.main, using:
+                {_ in
+                    
+                    let textCount = alertTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                    let textIsNotEmpty = textCount > 0
+
+                    addAction.isEnabled = textIsNotEmpty
+            })
             alertTextField.placeholder = "Create new task"
             textField = alertTextField
         }
-        
         present(alert, animated: true, completion: nil)
     }
     
