@@ -16,6 +16,7 @@
 		D340FC4B22DB98C700C4D0B0 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340FC4A22DB98C700C4D0B0 /* DetailsViewController.swift */; };
 		D340FC4F22DBA5A500C4D0B0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D340FC4D22DBA5A400C4D0B0 /* RealmSwift.framework */; };
 		D340FC5022DBA5A500C4D0B0 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D340FC4E22DBA5A400C4D0B0 /* Realm.framework */; };
+		D340FC5322DD353B00C4D0B0 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D340FC5222DD353B00C4D0B0 /* SwipeCellKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D340FC4A22DB98C700C4D0B0 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		D340FC4D22DBA5A400C4D0B0 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		D340FC4E22DBA5A400C4D0B0 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		D340FC5222DD353B00C4D0B0 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +41,7 @@
 			files = (
 				D340FC4F22DBA5A500C4D0B0 /* RealmSwift.framework in Frameworks */,
 				D340FC5022DBA5A500C4D0B0 /* Realm.framework in Frameworks */,
+				D340FC5322DD353B00C4D0B0 /* SwipeCellKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +115,7 @@
 		D340FC4C22DBA5A400C4D0B0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D340FC5222DD353B00C4D0B0 /* SwipeCellKit.framework */,
 				D340FC4E22DBA5A400C4D0B0 /* Realm.framework */,
 				D340FC4D22DBA5A400C4D0B0 /* RealmSwift.framework */,
 			);
@@ -196,6 +200,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwipeCellKit.framework",
 			);
 			outputFileListPaths = (
 			);
