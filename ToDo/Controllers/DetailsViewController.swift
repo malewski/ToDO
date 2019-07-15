@@ -83,6 +83,7 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
                         print("Error saving done status, \(error)")
                     }
                 }
+                self.navigationItem.title = textField.text!
             }
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
