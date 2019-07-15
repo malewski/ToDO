@@ -12,16 +12,21 @@ import RealmSwift
 class DetailsViewController: UIViewController, UITextViewDelegate {
     
     let realm = try! Realm()
+    let priorityArray = ["low", "medium", "high",]
     
     @IBOutlet weak var details: UITextView!
     @IBOutlet weak var navBar: UINavigationItem!
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var priorityPicker: UIPickerView!
     
     var selectedTask : Task?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        priorityPicker.delegate = self
+        priorityPicker.dataSource = self
         
         self.details.delegate = self
         
@@ -33,6 +38,8 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
             } else {
                 self.doneButton.setTitle("Done", for: .normal)
             }
+            
+            priorityPicker.selectRow(task.priority, inComponent: 0, animated: true)
         }
     }
     
@@ -72,6 +79,33 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
             do {
                 try realm.write {
                     task.details = details.text
+                }
+            } catch {
+                print("Error saving done status, \(error)")
+            }
+        }
+    }
+}
+
+extension DetailsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 3
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return priorityArray[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if let task = selectedTask {
+            do {
+                try realm.write {
+                    task.priority = row
                 }
             } catch {
                 print("Error saving done status, \(error)")
