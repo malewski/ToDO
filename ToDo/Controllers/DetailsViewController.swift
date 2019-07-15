@@ -62,15 +62,43 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func EditButtonPressed(_ sender: Any) {
         
-        self.details.isEditable = !self.details.isEditable
+        var textField = UITextField()
         
-        if self.details.isEditable == true {
-            self.details.becomeFirstResponder()
-            self.editButton.title = "End"
-        } else {
-            self.details.resignFirstResponder()
-            self.editButton.title = "Edit"
+        let alert = UIAlertController(title: "Edit taks title", message: "", preferredStyle: .alert)
+        
+        let editAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            if let task = self.selectedTask {
+                do {
+                    try self.realm.write {
+                        task.title = textField.text!
+                    }
+                } catch {
+                    print("Error saving done status, \(error)")
+                }
+            }
         }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            
+        }
+        
+        editAction.isEnabled = true
+        alert.addAction(cancelAction)
+        alert.addAction(editAction)
+        
+        alert.addTextField { (alertTextField) in
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: alertTextField, queue: OperationQueue.main, using:
+                {_ in
+                    
+                    let textCount = alertTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                    let textIsNotEmpty = textCount > 0
+                    
+                    editAction.isEnabled = textIsNotEmpty
+            })
+            alertTextField.text = self.selectedTask?.title
+            textField = alertTextField
+        }
+        present(alert, animated: true, completion: nil)
     
     }
     
