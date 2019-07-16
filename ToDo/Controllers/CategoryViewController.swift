@@ -17,7 +17,7 @@ class CategoryViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        loadCategories()
     }
 
     //MARK: - TableView Datasource Method
@@ -35,6 +35,29 @@ class CategoryViewController: UITableViewController {
         return cell
     }
 
+    @IBAction func addButtonPressed(_ sender: Any) {
+        
+        var textField = UITextField()
+        
+        let alert = UIAlertController(title: "Add new category", message: "", preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
+            
+            let newCategory = Category()
+            newCategory.name = textField.text!
+            
+            self.save(category: newCategory)
+        }
+        
+        alert.addAction(action)
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create new category"
+            textField = alertTextField
+        }
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
     /*
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
@@ -49,5 +72,23 @@ class CategoryViewController: UITableViewController {
         return true
     }
     */
-
+    
+    func loadCategories () {
+        
+        categories = realm.objects(Category.self)
+        
+        tableView.reloadData()
+    }
+    
+    func save(category: Category) {
+        
+        do {
+            try realm.write {
+                realm.add(category)
+            }
+        } catch {
+            print("Error saving context \(error)")
+        }
+        tableView.reloadData()
+    }
 }

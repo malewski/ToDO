@@ -26,9 +26,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="4DD-2J-VNY" kind="show" id="juK-Rj-duf"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -37,8 +34,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Category" id="BmB-gk-X2b">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="A3v-Ga-96I"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="A3v-Ga-96I">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="Lvo-lI-fP8" id="cSM-bN-FrB"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="4DD-2J-VNY" kind="show" id="Ei1-Er-SRu"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zsI-6t-8G5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
