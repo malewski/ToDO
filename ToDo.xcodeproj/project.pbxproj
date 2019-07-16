@@ -17,6 +17,8 @@
 		D340FC4F22DBA5A500C4D0B0 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D340FC4D22DBA5A400C4D0B0 /* RealmSwift.framework */; };
 		D340FC5022DBA5A500C4D0B0 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D340FC4E22DBA5A400C4D0B0 /* Realm.framework */; };
 		D340FC5322DD353B00C4D0B0 /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D340FC5222DD353B00C4D0B0 /* SwipeCellKit.framework */; };
+		D340FC5522DDFF0C00C4D0B0 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340FC5422DDFF0C00C4D0B0 /* Category.swift */; };
+		D340FC5722DE008000C4D0B0 /* CategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D340FC5622DE008000C4D0B0 /* CategoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		D340FC4D22DBA5A400C4D0B0 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		D340FC4E22DBA5A400C4D0B0 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
 		D340FC5222DD353B00C4D0B0 /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
+		D340FC5422DDFF0C00C4D0B0 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		D340FC5622DE008000C4D0B0 /* CategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 		D340FC3922DB60EA00C4D0B0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D340FC5622DE008000C4D0B0 /* CategoryViewController.swift */,
 				D340FC4A22DB98C700C4D0B0 /* DetailsViewController.swift */,
 				D340FC4822DB981D00C4D0B0 /* ToDoListViewController.swift */,
 			);
@@ -98,6 +103,7 @@
 		D340FC3D22DB618100C4D0B0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				D340FC5422DDFF0C00C4D0B0 /* Category.swift */,
 				D340FC3B22DB617300C4D0B0 /* Task.swift */,
 			);
 			path = Model;
@@ -218,8 +224,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D340FC4922DB981D00C4D0B0 /* ToDoListViewController.swift in Sources */,
+				D340FC5522DDFF0C00C4D0B0 /* Category.swift in Sources */,
 				D340FC3C22DB617300C4D0B0 /* Task.swift in Sources */,
 				D340FC2822DB5D1F00C4D0B0 /* AppDelegate.swift in Sources */,
+				D340FC5722DE008000C4D0B0 /* CategoryViewController.swift in Sources */,
 				D340FC4B22DB98C700C4D0B0 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
