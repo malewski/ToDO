@@ -12,6 +12,7 @@ import RealmSwift
 class DetailsViewController: UIViewController, UITextViewDelegate {
     
     let realm = try! Realm()
+    var categories : Results<Category>?
     let priorityArray = ["low", "medium", "high",]
     
     @IBOutlet weak var details: UITextView!
@@ -19,14 +20,19 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var editButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var priorityPicker: UIPickerView!
+    @IBOutlet weak var categoryPicker: UIPickerView!
     
     var selectedTask : Task?
+    var category: Category?
+    var categoryIndex : Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         priorityPicker.delegate = self
         priorityPicker.dataSource = self
+        categoryPicker.delegate = self
+        categoryPicker.dataSource = self
         
         self.details.delegate = self
         
@@ -40,15 +46,24 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
             }
             
             priorityPicker.selectRow(task.priority, inComponent: 0, animated: true)
+            
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        categories = realm.objects(Category.self)
+        categoryIndex = categories!.index(of: category!)!
+        categoryPicker.selectRow(categoryIndex, inComponent: 0, animated: true)
     }
     
     func textViewDidChange(_ textView: UITextView) {
         save()
     }
+    
     func textViewDidBeginEditing(_ textView: UITextView) {
         editButton.title = "Done"
     }
+    
     @IBAction func DoneButtonPressed(_ sender: Any) {
         if let task = selectedTask {
             do {
@@ -131,22 +146,56 @@ extension DetailsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 3
+        if pickerView == priorityPicker {
+            return 3
+        } else if pickerView == categoryPicker {
+            return categories?.count ?? 1
+        } else {
+            return 1
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return priorityArray[row]
+        if pickerView == priorityPicker {
+            return priorityArray[row]
+        } else if pickerView == categoryPicker {
+            return categories?[row].name ?? ""
+        } else {
+            return ""
+        }
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        if let task = selectedTask {
-            do {
-                try realm.write {
-                    task.priority = row
+        
+        if pickerView == priorityPicker {
+            
+            if let task = selectedTask {
+                do {
+                    try realm.write {
+                        task.priority = row
+                    }
+                } catch {
+                    print("Error saving done status, \(error)")
                 }
-            } catch {
-                print("Error saving done status, \(error)")
             }
+            
+        } else if pickerView == categoryPicker {
+            if categoryIndex != row {
+                if let task = selectedTask {
+                    do {
+                        try realm.write {
+                            let copyTask = Task(value: task)
+                            categories?[row].tasks.append(copyTask)
+                            realm.delete(task)
+                            self.navigationController?.popViewController(animated: true)
+                        }
+                    } catch {
+                        print("Error saving done status, \(error)")
+                    }
+                }
+            } 
         }
+
     }
+    
 }

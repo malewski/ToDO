@@ -95,7 +95,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBX-9y-arc">
-                                <rect key="frame" x="0.0" y="89" width="375" height="383"/>
+                                <rect key="frame" x="0.0" y="89" width="375" height="238"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
@@ -126,12 +126,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpZ-ZS-hJP">
-                                <rect key="frame" x="0.0" y="497" width="375" height="120"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="120" id="94c-1P-umq"/>
-                                </constraints>
-                            </pickerView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Priority:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4a-Sw-Fek">
                                 <rect key="frame" x="0.0" y="472" width="375" height="25"/>
                                 <constraints>
@@ -142,28 +136,56 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EpZ-ZS-hJP">
+                                <rect key="frame" x="0.0" y="497" width="375" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="94c-1P-umq"/>
+                                </constraints>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Category:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TxY-7s-igE">
+                                <rect key="frame" x="0.0" y="327" width="375" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="FCL-Se-Acd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJf-n9-xfo">
+                                <rect key="frame" x="0.0" y="352" width="375" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="kvv-ab-SK5"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="3wS-QW-fqm"/>
+                            <constraint firstItem="YJf-n9-xfo" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="6MB-Yf-OPm"/>
                             <constraint firstItem="R1N-qZ-Og5" firstAttribute="top" secondItem="YMG-f2-SNl" secondAttribute="top" id="6Z9-ss-GNP"/>
+                            <constraint firstItem="YJf-n9-xfo" firstAttribute="top" secondItem="TxY-7s-igE" secondAttribute="bottom" id="Aq6-v1-HtM"/>
+                            <constraint firstItem="W4a-Sw-Fek" firstAttribute="top" secondItem="YJf-n9-xfo" secondAttribute="bottom" id="BMO-0s-z9Y"/>
+                            <constraint firstItem="YJf-n9-xfo" firstAttribute="trailing" secondItem="YMG-f2-SNl" secondAttribute="trailing" id="BTd-e9-9h4"/>
                             <constraint firstItem="YMG-f2-SNl" firstAttribute="trailing" secondItem="R1N-qZ-Og5" secondAttribute="trailing" id="ELq-VA-B9u"/>
                             <constraint firstItem="EpZ-ZS-hJP" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="Gjs-Cn-WqS"/>
                             <constraint firstItem="W4a-Sw-Fek" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="H0P-bq-Txm"/>
                             <constraint firstItem="EpZ-ZS-hJP" firstAttribute="top" secondItem="W4a-Sw-Fek" secondAttribute="bottom" id="I6G-Pk-R9o"/>
                             <constraint firstItem="R1N-qZ-Og5" firstAttribute="top" secondItem="YMG-f2-SNl" secondAttribute="top" id="LdR-nI-oEm"/>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="trailing" secondItem="YMG-f2-SNl" secondAttribute="trailing" id="MMf-l8-LQi"/>
+                            <constraint firstItem="TxY-7s-igE" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="OpF-gC-4VF"/>
                             <constraint firstItem="EpZ-ZS-hJP" firstAttribute="trailing" secondItem="YMG-f2-SNl" secondAttribute="trailing" id="Qbt-UV-2Re"/>
                             <constraint firstItem="YMG-f2-SNl" firstAttribute="bottom" secondItem="CUf-Wv-2Yf" secondAttribute="bottom" id="QpN-Ut-KeB"/>
-                            <constraint firstItem="HBX-9y-arc" firstAttribute="trailing" secondItem="YMG-f2-SNl" secondAttribute="trailing" id="TBE-pQ-IDW"/>
+                            <constraint firstItem="TxY-7s-igE" firstAttribute="trailing" secondItem="YMG-f2-SNl" secondAttribute="trailing" id="Tl2-M0-lvM"/>
                             <constraint firstItem="CUf-Wv-2Yf" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="Yvq-rF-GZh"/>
+                            <constraint firstItem="HBX-9y-arc" firstAttribute="top" secondItem="R1N-qZ-Og5" secondAttribute="bottom" id="c4W-ey-VvL"/>
                             <constraint firstItem="YMG-f2-SNl" firstAttribute="trailing" secondItem="W4a-Sw-Fek" secondAttribute="trailing" id="cmE-uk-0nv"/>
                             <constraint firstItem="EpZ-ZS-hJP" firstAttribute="top" secondItem="W4a-Sw-Fek" secondAttribute="bottom" id="dG4-di-7T1"/>
-                            <constraint firstItem="W4a-Sw-Fek" firstAttribute="top" secondItem="HBX-9y-arc" secondAttribute="bottom" id="duG-di-nqX"/>
                             <constraint firstItem="R1N-qZ-Og5" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="fQZ-Lc-vy5"/>
                             <constraint firstItem="YMG-f2-SNl" firstAttribute="trailing" secondItem="CUf-Wv-2Yf" secondAttribute="trailing" id="g6U-i4-qDo"/>
-                            <constraint firstItem="HBX-9y-arc" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="hcj-07-z0A"/>
+                            <constraint firstItem="TxY-7s-igE" firstAttribute="top" secondItem="HBX-9y-arc" secondAttribute="bottom" id="gle-hu-GhS"/>
                             <constraint firstItem="CUf-Wv-2Yf" firstAttribute="top" secondItem="EpZ-ZS-hJP" secondAttribute="bottom" id="tAS-U3-tBS"/>
                             <constraint firstItem="YMG-f2-SNl" firstAttribute="trailing" secondItem="R1N-qZ-Og5" secondAttribute="trailing" id="tZj-E1-36k"/>
-                            <constraint firstItem="HBX-9y-arc" firstAttribute="top" secondItem="R1N-qZ-Og5" secondAttribute="bottom" id="uhY-cw-RoR"/>
+                            <constraint firstItem="YJf-n9-xfo" firstAttribute="top" secondItem="TxY-7s-igE" secondAttribute="bottom" id="tzv-RY-AFr"/>
                             <constraint firstItem="R1N-qZ-Og5" firstAttribute="leading" secondItem="YMG-f2-SNl" secondAttribute="leading" id="zag-8b-j8w"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YMG-f2-SNl"/>
@@ -176,6 +198,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="categoryPicker" destination="YJf-n9-xfo" id="7Te-9d-FG4"/>
                         <outlet property="details" destination="HBX-9y-arc" id="sJn-0y-wQH"/>
                         <outlet property="doneButton" destination="CUf-Wv-2Yf" id="wJu-c2-Zmz"/>
                         <outlet property="editButton" destination="wa7-h1-MiU" id="VgM-yF-zEI"/>

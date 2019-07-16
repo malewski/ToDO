@@ -71,6 +71,7 @@ class ToDoListViewController: UITableViewController {
         
         if let indexPath = tableView.indexPathForSelectedRow {
             destinationVC.selectedTask = tasks?[indexPath.row]
+            destinationVC.category = selectedCategory
         }
     }
     
