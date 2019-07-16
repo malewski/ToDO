@@ -35,6 +35,21 @@ class CategoryViewController: UITableViewController {
         return cell
     }
 
+    //MARK: - TableView Delegate Method
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "showTasks", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ToDoListViewController
+        
+        if let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categories?[indexPath.row]
+        }
+    }
+    
     @IBAction func addButtonPressed(_ sender: Any) {
         
         var textField = UITextField()

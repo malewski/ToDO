@@ -16,6 +16,12 @@ class ToDoListViewController: UITableViewController {
     
     var tasks : Results<Task>?
     
+    var selectedCategory : Category? {
+        didSet{
+            loadTasks()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,6 +34,7 @@ class ToDoListViewController: UITableViewController {
         loadTasks()
 //        self.tableView.reloadData()
     }
+    
     // MARK: - Table view data source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -75,13 +82,22 @@ class ToDoListViewController: UITableViewController {
         
         let addAction = UIAlertAction(title: "Add", style: .default) { (action) in
             
-            let newTask = Task()
-            newTask.title = textField.text!
-            self.save(task: newTask)
-            let indexPath = IndexPath(row: self.tasks!.count-1, section: 0)
-            self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-            self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
-            self.performSegue(withIdentifier: "showDetails", sender: self)
+            if let currentCategory = self.selectedCategory {
+                do {
+                    try self.realm.write {
+                        let newTask = Task()
+                        newTask.title = textField.text!
+                        currentCategory.tasks.append(newTask)
+                        self.tableView.reloadData()
+                        let indexPath = IndexPath(row: self.tasks!.count-1, section: 0)
+                        self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+                        self.tableView.selectRow(at: indexPath, animated: true, scrollPosition: .bottom)
+                        self.performSegue(withIdentifier: "showDetails", sender: self)
+                    }
+                } catch {
+                    print("Error saving new items, \(error)")
+                }
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
@@ -107,22 +123,22 @@ class ToDoListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    func save(task: Task) {
-        
-        do {
-            try realm.write {
-                realm.add(task)
-            }
-        } catch {
-            print("Error saving context \(error)")
-        }
-        loadTasks()
-//        tableView.reloadData()
-    }
+//    func save(task: Task) {
+//
+//        do {
+//            try realm.write {
+//                realm.add(task)
+//            }
+//        } catch {
+//            print("Error saving context \(error)")
+//        }
+//        loadTasks()
+////        tableView.reloadData()
+//    }
     
     func loadTasks() {
         
-        tasks = realm.objects(Task.self).sorted(byKeyPath: "priority", ascending: false)
+        tasks = selectedCategory?.tasks.sorted(byKeyPath: "priority", ascending: false)
         
         tableView.reloadData()
     }
