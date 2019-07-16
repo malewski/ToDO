@@ -56,6 +56,8 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
         categoryPicker.selectRow(categoryIndex, inComponent: 0, animated: true)
     }
     
+    //MARK: - Text View Method
+    
     func textViewDidChange(_ textView: UITextView) {
         save()
     }
@@ -63,6 +65,8 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
         editButton.title = "Done"
     }
+    
+    //MARK: - Button Pressed Method
     
     @IBAction func DoneButtonPressed(_ sender: Any) {
         if let task = selectedTask {
@@ -95,7 +99,7 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
                             task.title = textField.text!
                         }
                     } catch {
-                        print("Error saving done status, \(error)")
+                        print("Error saving new title, \(error)")
                     }
                 }
                 self.navigationItem.title = textField.text!
@@ -125,6 +129,8 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    //MARK: - Data Related Method
+    
     func save(){
         if let task = selectedTask {
             do {
@@ -132,7 +138,7 @@ class DetailsViewController: UIViewController, UITextViewDelegate {
                     task.details = details.text
                 }
             } catch {
-                print("Error saving done status, \(error)")
+                print("Error saving task details, \(error)")
             }
         }
     }
@@ -175,7 +181,7 @@ extension DetailsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
                         task.priority = row
                     }
                 } catch {
-                    print("Error saving done status, \(error)")
+                    print("Error saving task priority, \(error)")
                 }
             }
             
@@ -190,10 +196,10 @@ extension DetailsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
                             self.navigationController?.popViewController(animated: true)
                         }
                     } catch {
-                        print("Error saving done status, \(error)")
+                        print("Error changing category of task, \(error)")
                     }
                 }
-            } 
+            }
         }
 
     }

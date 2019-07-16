@@ -30,9 +30,7 @@ class ToDoListViewController: UITableViewController {
         loadTasks()
     }
     override func viewWillAppear(_ animated: Bool) {
-        
         loadTasks()
-//        self.tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -52,8 +50,6 @@ class ToDoListViewController: UITableViewController {
             cell.textLabel?.text = task.title
             
             cell.accessoryType = task.done ? .checkmark: .none
-        } else {
-            cell.textLabel?.text = "There is no task to do!"
         }
         
         return cell
@@ -124,19 +120,6 @@ class ToDoListViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-//    func save(task: Task) {
-//
-//        do {
-//            try realm.write {
-//                realm.add(task)
-//            }
-//        } catch {
-//            print("Error saving context \(error)")
-//        }
-//        loadTasks()
-////        tableView.reloadData()
-//    }
-    
     func loadTasks() {
         
         tasks = selectedCategory?.tasks.sorted(byKeyPath: "priority", ascending: false)
@@ -157,7 +140,7 @@ extension ToDoListViewController: SwipeTableViewCellDelegate {
                         self.realm.delete(taskForDeletion)
                     }
                 } catch {
-                    print("Error deleting context \(error)")
+                    print("Error deleting task, \(error)")
                 }
             }
         }

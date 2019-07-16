@@ -55,6 +55,8 @@ class CategoryViewController: UITableViewController {
         }
     }
     
+    //MARK: - Button Pressed Method
+    
     @IBAction func addButtonPressed(_ sender: Any) {
         
         var textField = UITextField()
@@ -93,20 +95,7 @@ class CategoryViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
+    //MARK: - Data Related Method
     
     func loadCategories () {
         
@@ -122,7 +111,7 @@ class CategoryViewController: UITableViewController {
                 realm.add(category)
             }
         } catch {
-            print("Error saving context \(error)")
+            print("Error saving category, \(error)")
         }
         tableView.reloadData()
     }
@@ -140,12 +129,11 @@ extension CategoryViewController: SwipeTableViewCellDelegate {
                         self.realm.delete(categoryForDeletion)
                     }
                 } catch {
-                    print("Error deleting context \(error)")
+                    print("Error deleting category, \(error)")
                 }
             }
         }
         
-        // customize the action appearance
         deleteAction.image = UIImage(named: "delete-icon")
         
         return [deleteAction]
