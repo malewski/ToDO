@@ -64,8 +64,23 @@ class CategoryViewController: UITableViewController {
             self.save(category: newCategory)
         }
         
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) in
+            
+        }
+        
+        action.isEnabled = false
         alert.addAction(action)
+        alert.addAction(cancelAction)
+        
         alert.addTextField { (alertTextField) in
+            NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: alertTextField, queue: OperationQueue.main, using:
+                {_ in
+                    
+                    let textCount = alertTextField.text?.trimmingCharacters(in: .whitespacesAndNewlines).count ?? 0
+                    let textIsNotEmpty = textCount > 0
+                    
+                    action.isEnabled = textIsNotEmpty
+            })
             alertTextField.placeholder = "Create new category"
             textField = alertTextField
         }
